@@ -26,6 +26,8 @@
 		7120876A2A0801D2008B2170 /* NasaCertificateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712087692A0801D2008B2170 /* NasaCertificateType.swift */; };
 		7120876C2A0801ED008B2170 /* CertificatePinningTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7120876B2A0801ED008B2170 /* CertificatePinningTypes.swift */; };
 		7120876E2A080201008B2170 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7120876D2A080201008B2170 /* Constants.swift */; };
+		712087712A080258008B2170 /* R31.cer in Resources */ = {isa = PBXBuildFile; fileRef = 7120876F2A080257008B2170 /* R31.cer */; };
+		712087722A080258008B2170 /* leafnasa.cer in Resources */ = {isa = PBXBuildFile; fileRef = 712087702A080258008B2170 /* leafnasa.cer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		712087692A0801D2008B2170 /* NasaCertificateType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NasaCertificateType.swift; sourceTree = "<group>"; };
 		7120876B2A0801ED008B2170 /* CertificatePinningTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertificatePinningTypes.swift; sourceTree = "<group>"; };
 		7120876D2A080201008B2170 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7120876F2A080257008B2170 /* R31.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = R31.cer; sourceTree = "<group>"; };
+		712087702A080258008B2170 /* leafnasa.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = leafnasa.cer; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,7 @@
 		291B5CAA2A07CF2500A1DC80 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				712087732A08025D008B2170 /* Certificates */,
 				712087672A07FE22008B2170 /* APIServiceManager.swift */,
 				7120876D2A080201008B2170 /* Constants.swift */,
 				7120876B2A0801ED008B2170 /* CertificatePinningTypes.swift */,
@@ -193,6 +198,15 @@
 				291B5CB82A07DCEC00A1DC80 /* PinningTypes.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		712087732A08025D008B2170 /* Certificates */ = {
+			isa = PBXGroup;
+			children = (
+				712087702A080258008B2170 /* leafnasa.cer */,
+				7120876F2A080257008B2170 /* R31.cer */,
+			);
+			path = Certificates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,8 +313,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				712087712A080258008B2170 /* R31.cer in Resources */,
 				291B5C882A07CDEA00A1DC80 /* Preview Assets.xcassets in Resources */,
 				291B5C852A07CDEA00A1DC80 /* Assets.xcassets in Resources */,
+				712087722A080258008B2170 /* leafnasa.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
