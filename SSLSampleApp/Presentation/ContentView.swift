@@ -9,14 +9,36 @@ struct ContentView: View {
     }
     
     var body: some View {
-        List(viewModel.items) { item in
-            VStack(alignment: .leading) {
-                Text(item.type.rawValue)
-                    .font(.headline)
-                Text(item.description)
-                    .font(.subheadline)
-            }
+        switch viewModel.uiState {
+            case .loading:
+                ProgressView().progressViewStyle(.circular)
+            case .loaded:
+                List(viewModel.items) { item in
+                    VStack(alignment: .leading) {
+                        Text(item.type.rawValue)
+                            .font(.headline)
+                            .onTapGesture {
+                                self.viewModel.didSelectPinningType(type: item.type)
+                            }
+                        Text(item.description)
+                            .font(.subheadline)
+                    }
+                }
+            case .error:  
+                VStack {
+                    Text("Pinning Failed").font(.headline)
+                    HStack {
+                        Button("Cancel") {
+                            self.viewModel.cancelLoading()
+                        }.padding(.all)
+                        Button("Retry") {
+                            self.viewModel.loadList()
+                        }.padding(.all)
+                    }
+                    
+                } 
         }
+        
     }
 }
 
