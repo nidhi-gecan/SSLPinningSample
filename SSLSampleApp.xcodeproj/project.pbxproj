@@ -20,6 +20,9 @@
 		291B5CB22A07D22700A1DC80 /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CB12A07D22700A1DC80 /* DataTransferService.swift */; };
 		291B5CB62A07D44E00A1DC80 /* PinningTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CB52A07D44E00A1DC80 /* PinningTypeViewModel.swift */; };
 		291B5CB92A07DCEC00A1DC80 /* PinningTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CB82A07DCEC00A1DC80 /* PinningTypes.swift */; };
+		712087652A07FE05008B2170 /* CertificatePinningManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712087632A07FE04008B2170 /* CertificatePinningManager.swift */; };
+		712087662A07FE05008B2170 /* PublicKeyPinningManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712087642A07FE05008B2170 /* PublicKeyPinningManager.swift */; };
+		712087682A07FE22008B2170 /* APIServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712087672A07FE22008B2170 /* APIServiceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,9 @@
 		291B5CB12A07D22700A1DC80 /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
 		291B5CB52A07D44E00A1DC80 /* PinningTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinningTypeViewModel.swift; sourceTree = "<group>"; };
 		291B5CB82A07DCEC00A1DC80 /* PinningTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinningTypes.swift; sourceTree = "<group>"; };
+		712087632A07FE04008B2170 /* CertificatePinningManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertificatePinningManager.swift; sourceTree = "<group>"; };
+		712087642A07FE05008B2170 /* PublicKeyPinningManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicKeyPinningManager.swift; sourceTree = "<group>"; };
+		712087672A07FE22008B2170 /* APIServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServiceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +150,9 @@
 		291B5CAA2A07CF2500A1DC80 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				712087672A07FE22008B2170 /* APIServiceManager.swift */,
+				712087632A07FE04008B2170 /* CertificatePinningManager.swift */,
+				712087642A07FE05008B2170 /* PublicKeyPinningManager.swift */,
 				291B5CAB2A07CF4200A1DC80 /* Endpoint.swift */,
 				291B5CAD2A07D17200A1DC80 /* NetworkConfig.swift */,
 				291B5CAF2A07D1D700A1DC80 /* NetworkService.swift */,
@@ -307,10 +316,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				712087682A07FE22008B2170 /* APIServiceManager.swift in Sources */,
 				291B5CB22A07D22700A1DC80 /* DataTransferService.swift in Sources */,
 				291B5CB02A07D1D700A1DC80 /* NetworkService.swift in Sources */,
+				712087662A07FE05008B2170 /* PublicKeyPinningManager.swift in Sources */,
 				291B5C832A07CDE800A1DC80 /* ContentView.swift in Sources */,
 				291B5CAC2A07CF4200A1DC80 /* Endpoint.swift in Sources */,
+				712087652A07FE05008B2170 /* CertificatePinningManager.swift in Sources */,
 				291B5CB62A07D44E00A1DC80 /* PinningTypeViewModel.swift in Sources */,
 				291B5CB92A07DCEC00A1DC80 /* PinningTypes.swift in Sources */,
 				291B5CAE2A07D17200A1DC80 /* NetworkConfig.swift in Sources */,
