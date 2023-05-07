@@ -5,7 +5,6 @@
 ## Build generated
 build/
 DerivedData/
-SSLSampleApp.xcodeproj/
 
 ## Various settings
 *.pbxuser
