@@ -20,6 +20,8 @@
 		291B5CB22A07D22700A1DC80 /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CB12A07D22700A1DC80 /* DataTransferService.swift */; };
 		291B5CB62A07D44E00A1DC80 /* PinningTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CB52A07D44E00A1DC80 /* PinningTypeViewModel.swift */; };
 		291B5CB92A07DCEC00A1DC80 /* PinningTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CB82A07DCEC00A1DC80 /* PinningTypes.swift */; };
+		291B5CBC2A07FE2500A1DC80 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CBB2A07FE2500A1DC80 /* AppDIContainer.swift */; };
+		291B5CBE2A07FED400A1DC80 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CBD2A07FED400A1DC80 /* AppConfiguration.swift */; };
 		712087652A07FE05008B2170 /* CertificatePinningManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712087632A07FE04008B2170 /* CertificatePinningManager.swift */; };
 		712087662A07FE05008B2170 /* PublicKeyPinningManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712087642A07FE05008B2170 /* PublicKeyPinningManager.swift */; };
 		712087682A07FE22008B2170 /* APIServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712087672A07FE22008B2170 /* APIServiceManager.swift */; };
@@ -64,6 +66,9 @@
 		291B5CB12A07D22700A1DC80 /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
 		291B5CB52A07D44E00A1DC80 /* PinningTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinningTypeViewModel.swift; sourceTree = "<group>"; };
 		291B5CB82A07DCEC00A1DC80 /* PinningTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinningTypes.swift; sourceTree = "<group>"; };
+		291B5CBB2A07FE2500A1DC80 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		291B5CBD2A07FED400A1DC80 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		291B5CBF2A07FFD600A1DC80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		712087632A07FE04008B2170 /* CertificatePinningManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertificatePinningManager.swift; sourceTree = "<group>"; };
 		712087642A07FE05008B2170 /* PublicKeyPinningManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicKeyPinningManager.swift; sourceTree = "<group>"; };
 		712087672A07FE22008B2170 /* APIServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServiceManager.swift; sourceTree = "<group>"; };
@@ -122,6 +127,7 @@
 		291B5C7F2A07CDE800A1DC80 /* SSLSampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				291B5CBF2A07FFD600A1DC80 /* Info.plist */,
 				291B5CB72A07DCD900A1DC80 /* Helper */,
 				291B5CB42A07D38100A1DC80 /* Application */,
 				291B5CB32A07D35B00A1DC80 /* Presentation */,
@@ -187,6 +193,7 @@
 		291B5CB42A07D38100A1DC80 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				291B5CBA2A07FE0800A1DC80 /* DIContainer */,
 				291B5C802A07CDE800A1DC80 /* SSLSampleApp.swift */,
 			);
 			path = Application;
@@ -200,15 +207,24 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		712087732A08025D008B2170 /* Certificates */ = {
+		291B5CBA2A07FE0800A1DC80 /* DIContainer */ = {
 			isa = PBXGroup;
 			children = (
-				712087702A080258008B2170 /* leafnasa.cer */,
-				7120876F2A080257008B2170 /* R31.cer */,
+				291B5CBB2A07FE2500A1DC80 /* AppDIContainer.swift */,
+				291B5CBD2A07FED400A1DC80 /* AppConfiguration.swift */,
 			);
-			path = Certificates;
+			path = DIContainer;
 			sourceTree = "<group>";
 		};
+          712087732A08025D008B2170 /* Certificates */ = {
+            isa = PBXGroup;
+            children = (
+                712087702A080258008B2170 /* leafnasa.cer */,
+                7120876F2A080257008B2170 /* R31.cer */,
+            );
+            path = Certificates;
+            sourceTree = "<group>";
+        };
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -343,7 +359,8 @@
 			files = (
 				712087682A07FE22008B2170 /* APIServiceManager.swift in Sources */,
 				291B5CB22A07D22700A1DC80 /* DataTransferService.swift in Sources */,
-				291B5CB02A07D1D700A1DC80 /* NetworkService.swift in Sources */,
+				291B5CBE2A07FED400A1DC80 /* AppConfiguration.swift in Sources */,
+				7120876E2A080201008B2170 /* Constants.swift in Sources */,
 				7120876C2A0801ED008B2170 /* CertificatePinningTypes.swift in Sources */,
 				712087662A07FE05008B2170 /* PublicKeyPinningManager.swift in Sources */,
 				7120876A2A0801D2008B2170 /* NasaCertificateType.swift in Sources */,
@@ -352,9 +369,10 @@
 				712087652A07FE05008B2170 /* CertificatePinningManager.swift in Sources */,
 				291B5CB62A07D44E00A1DC80 /* PinningTypeViewModel.swift in Sources */,
 				291B5CB92A07DCEC00A1DC80 /* PinningTypes.swift in Sources */,
-				7120876E2A080201008B2170 /* Constants.swift in Sources */,
+				291B5CBE2A07FED400A1DC80 /* AppConfiguration.swift in Sources */,
 				291B5CAE2A07D17200A1DC80 /* NetworkConfig.swift in Sources */,
 				291B5C812A07CDE800A1DC80 /* SSLSampleApp.swift in Sources */,
+				291B5CBC2A07FE2500A1DC80 /* AppDIContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +533,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SSLSampleApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SSLSampleApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -543,6 +563,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SSLSampleApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SSLSampleApp/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
