@@ -9,6 +9,23 @@ final class AppDIContainer {
     // MARK: - View Models
     
     func makePinningViewModel() -> PinningListViewModel {
-        return PinningListViewModel()
+        return PinningListViewModel(
+            pinningRepository: makePinningRepository()
+        )
+    }
+
+    // MARK: - Repositories
+
+    func makePinningRepository() -> PinningRepository {
+        return PinningRepository(
+            appConfiguration: appConfiguration,
+            urlSession: makeURLPinningSession()
+        )
+    }
+
+    // MARK: - Network
+
+    func makeURLPinningSession() -> URLPinningSession {
+        return URLPinningSession()
     }
 }

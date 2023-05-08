@@ -24,26 +24,41 @@ struct ContentView: View {
                             .font(.subheadline)
                     }
                 }
-            case .error:  
-                VStack {
-                    Text("Pinning Failed").font(.headline)
-                    HStack {
-                        Button("Cancel") {
-                            self.viewModel.cancelLoading()
-                        }.padding(.all)
-                        Button("Retry") {
-                            self.viewModel.loadList()
-                        }.padding(.all)
-                    }
-                    
-                } 
+            case .error(let message):
+            ErrorView(message: message) {
+                viewModel.cancelLoading()
+            }
+
         }
         
     }
 }
 
+struct ErrorView: View {
+
+    var message: String
+    var cancel: () -> Void
+    
+    init(message: String, cancel: @escaping () -> Void) {
+        self.message = message
+        self.cancel = cancel
+    }
+    
+    var body: some View {
+        VStack {
+            Text(message).font(.caption)
+            Button("Go Back") {
+                cancel()
+            }
+        }
+    }
+    
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: PinningListViewModel())
+        ErrorView(message: "Your message goes here!!") {
+            // Do nothing
+        }
     }
 }

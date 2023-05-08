@@ -22,12 +22,19 @@ final class AppConfiguration {
         return apiKey
     }()
 
-    lazy var certificateData: Data = {
+    private lazy var certificateData: Data = {
         guard let filePath: String = Bundle.main.path(forResource: certificateFileName, ofType: certificateFileExtension),
               let data: Data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
                 fatalError("Certificate file not found")
               }
         return data
+    }()
+
+    lazy var secCertificate: SecCertificate = {
+        guard let secCertificate: SecCertificate = SecCertificateCreateWithData(nil, certificateData as CFData) else {
+            fatalError("SecCertificate could not be created")
+        }
+        return secCertificate
     }()
     
     // MARK: - Initializers

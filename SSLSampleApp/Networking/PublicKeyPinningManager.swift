@@ -8,7 +8,14 @@ import Security
 import CommonCrypto
 import CryptoKit
 
-class PublicKeyPinningManager {
+class PublicKeyPinningManager: PinningProtocol {
+    
+    private let pinniedKey: String
+    
+    init(pinniedKey: String) {
+        self.pinniedKey = pinniedKey
+    }
+    
     // A constant array of bytes that represents the ASN.1 header for RSA 2048 public keys
     private let rsa2048Asn1Header: [UInt8] = [
         0x30, 0x82, 0x01, 0x22, 0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86,
@@ -34,13 +41,13 @@ class PublicKeyPinningManager {
     }
 
     // A method that performs public key pinning for a given server trust and an array of pinned keys
-    func performPublicKeyPinning(for serverTrust: SecTrust, pinnedKeys: [String]) -> Bool {
+    private func performPublicKeyPinning(for serverTrust: SecTrust) -> Bool {
         // Evaluate the server trust and return false if it fails
-        let status = SecTrustEvaluateWithError(serverTrust, nil)
+        let status: Bool = SecTrustEvaluateWithError(serverTrust, nil)
         if !status { return false }
         
         // Loop through all the certificates in the server trust chain
-        for index in 0..<SecTrustGetCertificateCount(serverTrust) {
+        for index: CFIndex in 0..<SecTrustGetCertificateCount(serverTrust) {
             // Get the certificate and the public key from the server trust
             guard let certificate = SecTrustGetCertificateAtIndex(serverTrust, index),
                   let serverPublicKey = SecCertificateCopyKey(certificate),
@@ -52,11 +59,16 @@ class PublicKeyPinningManager {
             print(certificate)
             print("Server Hashed Key = \(keyHash)")
             // Check if the hash matches any of the pinned keys
-            if pinnedKeys.contains(keyHash) {
+            if pinniedKey == keyHash {
                 return true
             }
          }
         // Return false if none of the hashes match
         return false
+    }
+
+    func performPinning(for serverTrust: SecTrust) -> Bool {
+        // Perform public key pinning
+        return performPublicKeyPinning(for: serverTrust)
     }
 }

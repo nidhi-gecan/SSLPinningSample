@@ -14,6 +14,6 @@ struct Constants {
     static let pinnedKeys:[String] = ["MBkXnNdQr3VwQ96iMtsitNL9ZxXliZW+7X9qdxH4HNs="]
 
     // A dictionary of domain names and their corresponding URLs that are used for pinning.
-    static let pinnedWeb = ["Nasa.com": "https://api.nasa.gov"]
+    static let pinnedWeb: [String : String] = ["Nasa.com": "https://api.nasa.gov"]
 }
 
