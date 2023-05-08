@@ -55,9 +55,9 @@ final class URLPinningSession: NSObject, URLSessionDelegate {
            return
         }
         // Perform pinning using Pinning Strategy
-        let result = pinningStrategy?.performPinning(for: serverTrust)
+        let result: Bool = pinningStrategy?.performPinning(for: serverTrust) ?? false
         // Check the result
-       result ?? false ? completionHandler(.useCredential, URLCredential(trust: serverTrust)) : completionHandler(.cancelAuthenticationChallenge, nil)
+        result ? completionHandler(.useCredential, URLCredential(trust: serverTrust)) : completionHandler(.cancelAuthenticationChallenge, nil)
    }
     
 }

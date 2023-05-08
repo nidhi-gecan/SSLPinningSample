@@ -14,7 +14,7 @@
 		291B5C922A07CDEA00A1DC80 /* SSLSampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5C912A07CDEA00A1DC80 /* SSLSampleAppTests.swift */; };
 		291B5C9C2A07CDEA00A1DC80 /* SSLSampleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5C9B2A07CDEA00A1DC80 /* SSLSampleAppUITests.swift */; };
 		291B5C9E2A07CDEA00A1DC80 /* SSLSampleAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5C9D2A07CDEA00A1DC80 /* SSLSampleAppUITestsLaunchTests.swift */; };
-		291B5CB62A07D44E00A1DC80 /* PinningTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CB52A07D44E00A1DC80 /* PinningTypeViewModel.swift */; };
+		291B5CB62A07D44E00A1DC80 /* PinningListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CB52A07D44E00A1DC80 /* PinningListViewModel.swift */; };
 		291B5CB92A07DCEC00A1DC80 /* PinningTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CB82A07DCEC00A1DC80 /* PinningTypes.swift */; };
 		291B5CBC2A07FE2500A1DC80 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CBB2A07FE2500A1DC80 /* AppDIContainer.swift */; };
 		291B5CBE2A07FED400A1DC80 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CBD2A07FED400A1DC80 /* AppConfiguration.swift */; };
@@ -56,7 +56,7 @@
 		291B5C972A07CDEA00A1DC80 /* SSLSampleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSLSampleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		291B5C9B2A07CDEA00A1DC80 /* SSLSampleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSLSampleAppUITests.swift; sourceTree = "<group>"; };
 		291B5C9D2A07CDEA00A1DC80 /* SSLSampleAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSLSampleAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		291B5CB52A07D44E00A1DC80 /* PinningTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinningTypeViewModel.swift; sourceTree = "<group>"; };
+		291B5CB52A07D44E00A1DC80 /* PinningListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinningListViewModel.swift; sourceTree = "<group>"; };
 		291B5CB82A07DCEC00A1DC80 /* PinningTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinningTypes.swift; sourceTree = "<group>"; };
 		291B5CBB2A07FE2500A1DC80 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		291B5CBD2A07FED400A1DC80 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				291B5C822A07CDE800A1DC80 /* ContentView.swift */,
-				291B5CB52A07D44E00A1DC80 /* PinningTypeViewModel.swift */,
+				291B5CB52A07D44E00A1DC80 /* PinningListViewModel.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -359,7 +359,7 @@
 				712087662A07FE05008B2170 /* PublicKeyPinningManager.swift in Sources */,
 				291B5C832A07CDE800A1DC80 /* ContentView.swift in Sources */,
 				712087652A07FE05008B2170 /* CertificatePinningManager.swift in Sources */,
-				291B5CB62A07D44E00A1DC80 /* PinningTypeViewModel.swift in Sources */,
+				291B5CB62A07D44E00A1DC80 /* PinningListViewModel.swift in Sources */,
 				291B5CC22A08E9AD00A1DC80 /* PinningRepository.swift in Sources */,
 				291B5CB92A07DCEC00A1DC80 /* PinningTypes.swift in Sources */,
 				291B5CBE2A07FED400A1DC80 /* AppConfiguration.swift in Sources */,

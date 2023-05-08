@@ -1,16 +1,11 @@
 import Foundation
 
-protocol PinningListViewModelInput {
-    func cancelLoading()
-    func didSelectPinningType(type: PinningType)
-}
-
 // The view model is responsible for transforming the model information into values that can be displayed on the view.
-final class PinningListViewModel: ObservableObject, PinningListViewModelInput {
+final class PinningListViewModel: ObservableObject {
 
     private let pinningRepository: PinningRepository
 
-    @Published private(set) var items: [PinningTypeData] = PinningType.allCases.map { type in
+    let items: [PinningTypeData] = PinningType.allCases.map { type in
         PinningTypeData(type: type, description: "https://api.nasa.gov")
     }
 
@@ -23,10 +18,7 @@ final class PinningListViewModel: ObservableObject, PinningListViewModelInput {
     
     // MARK: - PinningListViewModelInput
     func cancelLoading() {
-        uiState = .loading
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.uiState = .loaded
-        }
+        uiState = .loaded
     }
 
     func didSelectPinningType(type: PinningType) {
@@ -34,7 +26,7 @@ final class PinningListViewModel: ObservableObject, PinningListViewModelInput {
         Task {
             let value = await pinningRepository.checkPinning(type: type).value
             DispatchQueue.main.async {[weak self] in
-                self?.uiState = .error(message: value)
+                self?.uiState = .completion(message: value)
             }
         }
     }
@@ -51,5 +43,5 @@ struct PinningTypeData: Identifiable {
 enum UIState {
     case loading
     case loaded
-    case error(message: String)
+    case completion(message: String)
 }

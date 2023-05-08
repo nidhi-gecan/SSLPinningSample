@@ -24,17 +24,17 @@ struct ContentView: View {
                             .font(.subheadline)
                     }
                 }
-            case .error(let message):
-            ErrorView(message: message) {
-                viewModel.cancelLoading()
-            }
+            case .completion(let message):
+                PromptView(message: message) {
+                    viewModel.cancelLoading()
+                }
 
         }
         
     }
 }
 
-struct ErrorView: View {
+struct PromptView: View {
 
     var message: String
     var cancel: () -> Void
@@ -57,7 +57,7 @@ struct ErrorView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ErrorView(message: "Your message goes here!!") {
+        PromptView(message: "Your message goes here!!") {
             // Do nothing
         }
     }

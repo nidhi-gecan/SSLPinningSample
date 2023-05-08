@@ -16,12 +16,14 @@ final class PinningRepository {
     }
 
     func checkPinning(type pinningType: PinningType) -> Task<String, Never> {
+        
        switch pinningType {
          case .certificatePinning:
-           urlSession.changePinningStrategy(to: CertificatePinningManager(secCertificate: appConfiguration.secCertificate))
+           urlSession.changePinningStrategy(to: CertificatePinningManager(secCertificateData: appConfiguration.certificateData))
         case .publicKeyPinning:
            urlSession.changePinningStrategy(to: PublicKeyPinningManager(pinniedKey: appConfiguration.publicKey))
        }
+        
        return Task {
             do {
                 let result = try await networkManager.fetchAsync()

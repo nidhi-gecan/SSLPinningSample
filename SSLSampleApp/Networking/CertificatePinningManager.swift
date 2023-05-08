@@ -3,10 +3,10 @@ import Foundation
 /// A class that performs certificate pinning for a server trust.
 class CertificatePinningManager: PinningProtocol {
     
-    private let secCertificateData: CFData
+    private let secCertificateData: Data
 
-    init(secCertificate: SecCertificate) {
-        self.secCertificateData = SecCertificateCopyData(secCertificate)
+    init(secCertificateData: Data) {
+        self.secCertificateData = secCertificateData
     }
 
     /// Performs certificate pinning for a given server trust and pinned certificates.
@@ -25,7 +25,7 @@ class CertificatePinningManager: PinningProtocol {
         }
 
         secTrusts.map { SecCertificateCopyData($0) as Data }.forEach { 
-            if $0 == secCertificateData as Data {
+            if $0 == secCertificateData {
                 print("Matched remote certificate = \($0)")
                 result = true
             }
