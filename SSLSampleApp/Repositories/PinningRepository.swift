@@ -20,7 +20,7 @@ final class PinningRepository {
          case .certificatePinning:
            urlSession.changePinningStrategy(to: CertificatePinningManager(secCertificate: appConfiguration.secCertificate))
         case .publicKeyPinning:
-           urlSession.changePinningStrategy(to: PublicKeyPinningManager(pinniedKey: appConfiguration.apiKey))
+           urlSession.changePinningStrategy(to: PublicKeyPinningManager(pinniedKey: appConfiguration.publicKey))
        }
        return Task {
             do {

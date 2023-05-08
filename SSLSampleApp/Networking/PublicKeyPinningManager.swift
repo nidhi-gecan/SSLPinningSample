@@ -10,10 +10,10 @@ import CryptoKit
 
 class PublicKeyPinningManager: PinningProtocol {
     
-    private let pinniedKey: String
+    private let pinnedKey: String
     
     init(pinniedKey: String) {
-        self.pinniedKey = pinniedKey
+        self.pinnedKey = pinniedKey
     }
     
     // A constant array of bytes that represents the ASN.1 header for RSA 2048 public keys
@@ -42,27 +42,25 @@ class PublicKeyPinningManager: PinningProtocol {
 
     // A method that performs public key pinning for a given server trust and an array of pinned keys
     private func performPublicKeyPinning(for serverTrust: SecTrust) -> Bool {
-        // Evaluate the server trust and return false if it fails
-        let status: Bool = SecTrustEvaluateWithError(serverTrust, nil)
-        if !status { return false }
         
-        // Loop through all the certificates in the server trust chain
-        for index: CFIndex in 0..<SecTrustGetCertificateCount(serverTrust) {
-            // Get the certificate and the public key from the server trust
-            guard let certificate = SecTrustGetCertificateAtIndex(serverTrust, index),
-                  let serverPublicKey = SecCertificateCopyKey(certificate),
-                  let publicKeyData = SecKeyCopyExternalRepresentation(serverPublicKey, nil) else {
+        guard let secCertificates: [SecCertificate] = SecTrustCopyCertificateChain(serverTrust) as? [SecCertificate] else {
+            return false
+        }
+        
+        for secCertificate: SecCertificate in secCertificates {
+            // Get the public key data from the certificate
+            guard let publicKey: SecKey = SecCertificateCopyKey(secCertificate),
+            let publicKeyData: CFData = SecKeyCopyExternalRepresentation(publicKey, nil) else {
                 return false
             }
             // Compute the hash of the public key data
-            let keyHash = sha256(data: publicKeyData as Data)
-            print(certificate)
+            let keyHash: String = sha256(data: publicKeyData as Data)
             print("Server Hashed Key = \(keyHash)")
             // Check if the hash matches any of the pinned keys
-            if pinniedKey == keyHash {
+            if pinnedKey == keyHash {
                 return true
             }
-         }
+        }
         // Return false if none of the hashes match
         return false
     }

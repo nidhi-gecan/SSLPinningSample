@@ -15,24 +15,23 @@ class CertificatePinningManager: PinningProtocol {
     ///   - pinnedCertificates: The pinned certificates to compare with. Defaults to all the certificates in the app bundle.
     /// - Returns: A boolean value indicating whether the pinning was successful or not.
     private func performCertificatePinning(for serverTrust: SecTrust) -> Bool {
+        
+        var result: Bool = false
            
         print("Chain of certificates in server trust = \(SecTrustGetCertificateCount(serverTrust))")
-
-        for index in 0..<SecTrustGetCertificateCount(serverTrust){
-            if let certificate = SecTrustGetCertificateAtIndex(serverTrust, index) {
-                    
-                // Evaluate the server trust and get a boolean value
-                let isServerTrusted = SecTrustEvaluateWithError(serverTrust, nil)
-                let remoteCertificateData  =  SecCertificateCopyData(certificate)
-                print(certificate)
-                // Check if the server is trusted and the certificate data is in the pinned certificates
-                if isServerTrusted && remoteCertificateData == secCertificateData {
-                    print("Matched remote certificate = \(certificate)")
-                    return true
-                }
-            }
+        
+        guard let secTrusts: [SecCertificate] = SecTrustCopyCertificateChain(serverTrust) as? [SecCertificate] else {
+            return false
         }
-        return false
+
+        secTrusts.map { SecCertificateCopyData($0) as Data }.forEach { 
+            if $0 == secCertificateData as Data {
+                print("Matched remote certificate = \($0)")
+                result = true
+            }
+         }
+    
+        return result
     }
 
     func performPinning(for serverTrust: SecTrust) -> Bool {

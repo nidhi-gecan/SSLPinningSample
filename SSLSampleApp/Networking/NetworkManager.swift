@@ -49,6 +49,11 @@ final class URLPinningSession: NSObject, URLSessionDelegate {
         let policy: SecPolicy = SecPolicyCreateSSL(true, challenge.protectionSpace.host as CFString)
         // Set the policy for the trust
         SecTrustSetPolicies(serverTrust, policy)
+        guard SecTrustEvaluateWithError(serverTrust, nil) else {
+            // If not, cancel the challenge
+            completionHandler(.cancelAuthenticationChallenge, nil)
+           return
+        }
         // Perform pinning using Pinning Strategy
         let result = pinningStrategy?.performPinning(for: serverTrust)
         // Check the result

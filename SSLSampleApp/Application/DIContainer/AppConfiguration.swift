@@ -6,7 +6,7 @@ final class AppConfiguration {
     private let certificateFileName: String = "R31"
     private let certificateFileExtension: String = "cer"
     private let apiBaseUrlKey: String = "API_BASE_URL"
-    private let apiDicKey: String = "API_KEY"
+    private let apiDicKey: String = "PUBLIC_KEY"
 
     lazy var apiBaseURL: String = {
         guard let apiBaseURL: String = Bundle.main.object(forInfoDictionaryKey: apiBaseUrlKey) as? String else {
@@ -15,7 +15,7 @@ final class AppConfiguration {
         return apiBaseURL
     }()
     
-    lazy var apiKey: String = {
+    lazy var publicKey: String = {
         guard let apiKey: String = Bundle.main.object(forInfoDictionaryKey: apiDicKey) as? String else {
             fatalError("ApiKey must not be empty in plist")
         }

@@ -4,7 +4,7 @@
 <dict>
 	<key>API_BASE_URL</key>
 	<string>https://api.nasa.gov</string>
-	<key>API_KEY</key>
+	<key>PUBLIC_KEY</key>
 	<string>MBkXnNdQr3VwQ96iMtsitNL9ZxXliZW+7X9qdxH4HNs=</string>
 </dict>
 </plist>
