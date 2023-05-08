@@ -14,10 +14,6 @@
 		291B5C922A07CDEA00A1DC80 /* SSLSampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5C912A07CDEA00A1DC80 /* SSLSampleAppTests.swift */; };
 		291B5C9C2A07CDEA00A1DC80 /* SSLSampleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5C9B2A07CDEA00A1DC80 /* SSLSampleAppUITests.swift */; };
 		291B5C9E2A07CDEA00A1DC80 /* SSLSampleAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5C9D2A07CDEA00A1DC80 /* SSLSampleAppUITestsLaunchTests.swift */; };
-		291B5CAC2A07CF4200A1DC80 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CAB2A07CF4200A1DC80 /* Endpoint.swift */; };
-		291B5CAE2A07D17200A1DC80 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CAD2A07D17200A1DC80 /* NetworkConfig.swift */; };
-		291B5CB02A07D1D700A1DC80 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CAF2A07D1D700A1DC80 /* NetworkService.swift */; };
-		291B5CB22A07D22700A1DC80 /* DataTransferService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CB12A07D22700A1DC80 /* DataTransferService.swift */; };
 		291B5CB62A07D44E00A1DC80 /* PinningTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CB52A07D44E00A1DC80 /* PinningTypeViewModel.swift */; };
 		291B5CB92A07DCEC00A1DC80 /* PinningTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CB82A07DCEC00A1DC80 /* PinningTypes.swift */; };
 		291B5CBC2A07FE2500A1DC80 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291B5CBB2A07FE2500A1DC80 /* AppDIContainer.swift */; };
@@ -60,10 +56,6 @@
 		291B5C972A07CDEA00A1DC80 /* SSLSampleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SSLSampleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		291B5C9B2A07CDEA00A1DC80 /* SSLSampleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSLSampleAppUITests.swift; sourceTree = "<group>"; };
 		291B5C9D2A07CDEA00A1DC80 /* SSLSampleAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSLSampleAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		291B5CAB2A07CF4200A1DC80 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		291B5CAD2A07D17200A1DC80 /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
-		291B5CAF2A07D1D700A1DC80 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		291B5CB12A07D22700A1DC80 /* DataTransferService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransferService.swift; sourceTree = "<group>"; };
 		291B5CB52A07D44E00A1DC80 /* PinningTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinningTypeViewModel.swift; sourceTree = "<group>"; };
 		291B5CB82A07DCEC00A1DC80 /* PinningTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinningTypes.swift; sourceTree = "<group>"; };
 		291B5CBB2A07FE2500A1DC80 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
@@ -173,10 +165,6 @@
 				712087692A0801D2008B2170 /* NasaCertificateType.swift */,
 				712087632A07FE04008B2170 /* CertificatePinningManager.swift */,
 				712087642A07FE05008B2170 /* PublicKeyPinningManager.swift */,
-				291B5CAB2A07CF4200A1DC80 /* Endpoint.swift */,
-				291B5CAD2A07D17200A1DC80 /* NetworkConfig.swift */,
-				291B5CAF2A07D1D700A1DC80 /* NetworkService.swift */,
-				291B5CB12A07D22700A1DC80 /* DataTransferService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -216,15 +204,15 @@
 			path = DIContainer;
 			sourceTree = "<group>";
 		};
-          712087732A08025D008B2170 /* Certificates */ = {
-            isa = PBXGroup;
-            children = (
-                712087702A080258008B2170 /* leafnasa.cer */,
-                7120876F2A080257008B2170 /* R31.cer */,
-            );
-            path = Certificates;
-            sourceTree = "<group>";
-        };
+		712087732A08025D008B2170 /* Certificates */ = {
+			isa = PBXGroup;
+			children = (
+				712087702A080258008B2170 /* leafnasa.cer */,
+				7120876F2A080257008B2170 /* R31.cer */,
+			);
+			path = Certificates;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -358,19 +346,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				712087682A07FE22008B2170 /* APIServiceManager.swift in Sources */,
-				291B5CB22A07D22700A1DC80 /* DataTransferService.swift in Sources */,
 				291B5CBE2A07FED400A1DC80 /* AppConfiguration.swift in Sources */,
 				7120876E2A080201008B2170 /* Constants.swift in Sources */,
 				7120876C2A0801ED008B2170 /* CertificatePinningTypes.swift in Sources */,
 				712087662A07FE05008B2170 /* PublicKeyPinningManager.swift in Sources */,
 				7120876A2A0801D2008B2170 /* NasaCertificateType.swift in Sources */,
 				291B5C832A07CDE800A1DC80 /* ContentView.swift in Sources */,
-				291B5CAC2A07CF4200A1DC80 /* Endpoint.swift in Sources */,
 				712087652A07FE05008B2170 /* CertificatePinningManager.swift in Sources */,
 				291B5CB62A07D44E00A1DC80 /* PinningTypeViewModel.swift in Sources */,
 				291B5CB92A07DCEC00A1DC80 /* PinningTypes.swift in Sources */,
 				291B5CBE2A07FED400A1DC80 /* AppConfiguration.swift in Sources */,
-				291B5CAE2A07D17200A1DC80 /* NetworkConfig.swift in Sources */,
 				291B5C812A07CDE800A1DC80 /* SSLSampleApp.swift in Sources */,
 				291B5CBC2A07FE2500A1DC80 /* AppDIContainer.swift in Sources */,
 			);

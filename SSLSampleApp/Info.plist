@@ -4,5 +4,7 @@
 <dict>
 	<key>API_BASE_URL</key>
 	<string>https://www.google.com</string>
+	<key>API_KEY</key>
+	<string>MBkXnNdQr3VwQ96iMtsitNL9ZxXliZW+7X9qdxH4HNs=</string>
 </dict>
 </plist>
