@@ -3,27 +3,27 @@ import Foundation
 final class PinningRepository {
 
     private let networkManager: NetworkManager
-    private let urlSession: URLPinningSession
     private let appConfiguration: AppConfiguration
+    private var urlPinningSession: URLPinningSession? = nil
     
     init(
-        appConfiguration: AppConfiguration,
-        urlSession: URLPinningSession
+        appConfiguration: AppConfiguration
     ) {
         self.appConfiguration = appConfiguration
-        self.urlSession = urlSession
-        self.networkManager = NetworkManager(url: URL(string: appConfiguration.apiBaseURL)!, urlSessionDelegate: urlSession)
+        self.networkManager = NetworkManager(url: URL(string: appConfiguration.apiBaseURL)!)
     }
 
     func checkPinning(type pinningType: PinningType) -> Task<String, Never> {
         
        switch pinningType {
-         case .certificatePinning:
-           urlSession.changePinningStrategy(to: CertificatePinningManager(secCertificateData: appConfiguration.certificateData))
+        case .certificatePinning:
+           urlPinningSession = URLPinningSession(pinningStrategy: CertificatePinningManager(secCertificateData: appConfiguration.certificateData))
         case .publicKeyPinning:
-           urlSession.changePinningStrategy(to: PublicKeyPinningManager(pinniedKey: appConfiguration.publicKey))
-       }
-        
+           urlPinningSession = URLPinningSession(pinningStrategy: PublicKeyPinningManager(pinniedKey: appConfiguration.publicKey))
+        case .identityKeyPinning:
+           urlPinningSession = nil
+        }
+        networkManager.setURLSessionDelegate(urlSessionDelegate: urlPinningSession)
        return Task {
             do {
                 let result = try await networkManager.fetchAsync()
@@ -40,3 +40,4 @@ final class PinningRepository {
     }
 
 }
+

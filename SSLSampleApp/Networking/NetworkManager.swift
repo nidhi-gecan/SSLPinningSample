@@ -4,14 +4,18 @@ import Foundation
 /// A class that manages the API service with certificate pinning.
 class NetworkManager {
 
-    private let urlSessionDelegate: URLSessionDelegate
-    private let session: URLSession
+    private var urlSessionDelegate: URLSessionDelegate?
     private let url: URL
+    private var session: URLSession
     
-    init(url: URL, urlSessionDelegate: URLSessionDelegate) {
+    init(url: URL) {
         self.url = url
+        self.session = URLSession(configuration: .ephemeral)
+    }
+    
+    func setURLSessionDelegate(urlSessionDelegate: URLSessionDelegate?) {
         self.urlSessionDelegate = urlSessionDelegate
-        self.session = URLSession(configuration: .ephemeral, delegate: urlSessionDelegate, delegateQueue: nil)
+        session = URLSession(configuration: .ephemeral)
     }
 
     /// Function to fetch data from the URL
@@ -30,9 +34,9 @@ class NetworkManager {
 /// URLSessionDelegate implementation for SSL Pinning
 final class URLPinningSession: NSObject, URLSessionDelegate {
     
-    private var pinningStrategy: PinningProtocol?
-
-    func changePinningStrategy(to pinningStrategy: PinningProtocol) {
+    private var pinningStrategy: PinningProtocol
+    
+    init(pinningStrategy: PinningProtocol) {
         self.pinningStrategy = pinningStrategy
     }
 
@@ -55,7 +59,7 @@ final class URLPinningSession: NSObject, URLSessionDelegate {
            return
         }
         // Perform pinning using Pinning Strategy
-        let result: Bool = pinningStrategy?.performPinning(for: serverTrust) ?? false
+        let result: Bool = pinningStrategy.performPinning(for: serverTrust)
         // Check the result
         result ? completionHandler(.useCredential, URLCredential(trust: serverTrust)) : completionHandler(.cancelAuthenticationChallenge, nil)
    }

@@ -4,6 +4,24 @@
 <dict>
 	<key>API_BASE_URL</key>
 	<string>https://api.nasa.gov</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSPinnedDomains</key>
+		<dict>
+			<key>api.nasa.gov</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<false/>
+				<key>NSPinnedLeafIdentities</key>
+				<array>
+					<dict>
+						<key>SPKI-SHA256-BASE64</key>
+						<string>MBkXnNdQr3VwQ96iMtsitNL9ZxXliZW+7X9qdxH4HNs=</string>
+					</dict>
+				</array>
+			</dict>
+		</dict>
+	</dict>
 	<key>PUBLIC_KEY</key>
 	<string>MBkXnNdQr3VwQ96iMtsitNL9ZxXliZW+7X9qdxH4HNs=</string>
 </dict>

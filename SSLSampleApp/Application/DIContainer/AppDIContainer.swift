@@ -17,15 +17,6 @@ final class AppDIContainer {
     // MARK: - Repositories
 
     func makePinningRepository() -> PinningRepository {
-        return PinningRepository(
-            appConfiguration: appConfiguration,
-            urlSession: makeURLPinningSession()
-        )
-    }
-
-    // MARK: - Network
-
-    func makeURLPinningSession() -> URLPinningSession {
-        return URLPinningSession()
+        return PinningRepository(appConfiguration: appConfiguration)
     }
 }
